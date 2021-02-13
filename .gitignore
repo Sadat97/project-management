@@ -26,9 +26,7 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
-
-# TODO: ignore ide files
-.idea/*
+/.idea/
 .idea
+.idea/
 /.idea
-/.idea/*
