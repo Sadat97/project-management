@@ -1,9 +1,9 @@
 # README
 
 * Ruby version
- 2.5.*
+` 2.5.*`
 
-*installion
+* installion
 `bundle install`
 
 * Database creation
