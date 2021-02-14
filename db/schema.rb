@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_13_192517) do
+ActiveRecord::Schema.define(version: 2021_02_14_003447) do
+
+  create_table "tickets", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.integer "assigned_user_id_id"
+    t.date "due_date"
+    t.integer "status_id"
+    t.integer "progress"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["assigned_user_id_id"], name: "index_tickets_on_assigned_user_id_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
