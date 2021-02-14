@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
-  has_many :tickets, class_name: 'Ticket', foreign_key: 'assigned_user', dependent: :destroy
+  has_many :tickets, class_name: 'Ticket', foreign_key: 'assigned_user_id', dependent: :destroy
 
   validates :name, :mail, presence: true
   validates :time_zone, presence: true, time_zone: true

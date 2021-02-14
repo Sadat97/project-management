@@ -10,7 +10,11 @@ RSpec.describe User, type: :model do
       expect(user.valid?).to be true
     end
 
-    describe 'attributes presence' do
+    describe 'relations' do
+      it { should have_many(:tickets).dependent(:destroy) }
+    end
+
+    describe 'validations' do
       it { should validate_presence_of :mail }
       it { should validate_presence_of :name }
       it { should validate_presence_of :time_zone }

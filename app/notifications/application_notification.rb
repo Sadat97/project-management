@@ -2,8 +2,6 @@
 
 class ApplicationNotification
   def scheduled_date_time
-    @ticket.reminder_date_time
+    @ticket.reminder_date_time.utc
   end
-
-  def by_mail(mailer_class, method, *args); end
 end

@@ -3,7 +3,7 @@
 class Ticket < ApplicationRecord
   belongs_to :assigned_user, class_name: 'User'
 
-  validates :title, :assigned_user, presence: true
+  validates :title, :assigned_user, :due_date, presence: true
 
   after_save :schedule_reminder_notification, if: :user_reminder_enabled?
 
@@ -24,7 +24,7 @@ class Ticket < ApplicationRecord
     assigned_user&.send_due_date_reminder
   end
 
-  def schedule_reminder_enabled
+  def schedule_reminder_notification
     TicketNotifications::DueDateReminder.new(self).notify_by_mail
   end
 end

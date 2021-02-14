@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'database_cleaner'
-
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 
@@ -87,5 +86,9 @@ RSpec.configure do |config|
     DatabaseCleaner.cleaning do
       example.run
     end
+  end
+
+  RSpec::Sidekiq.configure do |config|
+    config.warn_when_jobs_not_processed_by_sidekiq = false
   end
 end
