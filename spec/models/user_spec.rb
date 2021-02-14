@@ -1,11 +1,26 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  it {should validate_presence_of :mail}
-  it {should validate_presence_of :name}
-  it {should validate_presence_of :time_zone}
+  describe 'user model' do
+    let(:user) { build(:user) }
 
-  describe 'should have valid time zone' do
+    it 'should be valid' do
+      expect(user.valid?).to be true
+    end
 
+    describe 'attributes presence' do
+      it { should validate_presence_of :mail }
+      it { should validate_presence_of :name }
+      it { should validate_presence_of :time_zone }
+    end
+
+    describe 'time zone validation' do
+      it 'should not be valid if time zone is invalid' do
+        user.time_zone = 'not valid timezone'
+        expect(user.valid?).to be false
+      end
+    end
   end
 end
